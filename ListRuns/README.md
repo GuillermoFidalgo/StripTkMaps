@@ -15,7 +15,7 @@ Python 3.6.8
 
 At your terminal (choose different port for your case)
 
-The ports are optional to specify, you may want to do this when trying to use a Jupyter notebook
+The ports are optional, you may do this when wanting to use a Jupyter notebook
 #### At lpc 
 ```bash
 kinit username@FNAL.GOV
@@ -37,9 +37,7 @@ cmsrel CMSSW_10_2_10
 cd CMSSW_10_2_10/src/
 cmsenv
 
-git clone git@github.com:GuillermoFidalgo/StripTkMaps.git
-#or 
-git clone https://github.com/GuillermoFidalgo/StripTkMaps.git
+git clone https://github.com/CMSTrackerDPG/StripTkMaps.git
 
 cd StripTkMaps
 
@@ -51,20 +49,19 @@ jupyter notebook --port 9999 --ip 127.0.0.1 --no-browser
 
 
 
-### The use of the notebook is deprecated and was present only for initial development so you should ignore the notebook for now.
+### The use of the notebook is present only for familiarizing with the code and you could also use it for developement. It is not essential for the job so you can ignore the notebook.
 To use the notebook you must have the appropiate certificate in the same directory as the script (Unless you specify the path to it)
 [Open the notebook](ListOfRuns.ipynb) to interact with the code and make the apporpiate changes to your needs.
 
-Notice that there is an `index.html` document. You should ignore this because it is a remnant from earlier versions of the code and it is not necesary at all for now.
 
 
 **You can see other functionality in the [`ListRuns_cfg.py`](ListRuns_cfg.py) script**
 
 
-*Side Note* To use the script please look at [Authentication Setup](https://github.com/GuillermoFidalgo/ML4TRKDQM#authentication-setup)
+*Side Note* To use the script please look at [Authentication Setup](https://github.com/CMSTrackerDPG/StripTkMaps/tree/master/ListRuns#authentication-setup)
 ### Virtual environment
 
-*Side Note* **If you clone from this repo please remove `venv/` and all of its contents *before* creating a virtual enviroment**
+
 
 Unless you know what you are doing, it is recommended to set up a virtual environment such as to not get conflicts between different versions of packages.
 
@@ -84,7 +81,7 @@ Then you need to *activate* the virtual environment
 You should now see a ```(venv) ``` in front of you terminal line.
 
 ```
-(venv) [yourname@yourmachine ML4TKRDQM]$
+(venv) [yourname@yourmachine]$
 ```
 
 
@@ -94,22 +91,22 @@ All tools necessary for data retrieval and data analysis are installable via ```
 
 *pip* comes bundled in Python 3.6 so, you should already have it installed.
 
-These commands install all the tools necessary for this notebook. Each of them have their own documentation. You can start with the general documentation for most of the packages [here](https://github.com/ptrstn/cms-tracker-studies-notebook) and a <ins>seperate documentation</ins> for `runregistry` [here](https://github.com/fabioespinosa/runregistry_api_client) 
+These commands install all the tools necessary for this notebook and more. Each of them have their own documentation. You can start with the general documentation for most of the packages [here](https://github.com/ptrstn/cms-tracker-studies-notebook) and a <ins>seperate documentation</ins> for `runregistry` [here](https://github.com/fabioespinosa/runregistry_api_client) 
 
 ```bash
-pip install git+https://github.com/CMSTrackerDPG/cernrequests
-pip install git+https://github.com/CMSTrackerDPG/runregcrawlr
-pip install git+https://github.com/CMSTrackerDPG/dqmcrawlr
-pip install git+https://github.com/CMSTrackerDPG/wbmcrawlr
-pip install git+https://github.com/CMSTrackerDPG/cms-tracker-studies
-pip install runregistry
-pip install numpy
+pip install git+https://github.com/CMSTrackerDPG/cernrequests              #important
+pip install git+https://github.com/CMSTrackerDPG/runregcrawlr              #not used here
+pip install git+https://github.com/CMSTrackerDPG/dqmcrawlr                 #not used here
+pip install git+https://github.com/CMSTrackerDPG/wbmcrawlr                 #not used here
+pip install git+https://github.com/CMSTrackerDPG/cms-tracker-studies       #not used here
+pip install runregistry                                                    #important
+pip install numpy 
 pip install matplotlib
 pip install pandas
 pip install seaborn
 pip install scipy
 pip install scikit-learn
-pip install bs4
+pip install bs4                                                            #important
 ```
 
 *Side Note*: ```cernrequests``` is also available in pypi, so you could also install it via:
@@ -149,8 +146,6 @@ In the simplest case, just enter them twice.
 
 
 
-
-
 # Usage
 
 The `ListRuns_cfg.py` is a module which contains different functions and helper scripts in order to extract information from different sources to later produce 
@@ -165,5 +160,8 @@ The most relevant methods to look at when wanting to change the final list are:
 The `ListRunsDriver.py` is an interactive (for now) script that will generate text files with the run numbers found on the specified source.
 Note that it is a bit hard coded for ZeroBias runs. This is something to be fixed in the future.
 
-*Side note* The latest version of the `getRR()` method is awaiting athentication fixes and will output some errors on screen. This is due to some security 
-workaround that is currently being looked at.
+*Side note* The latest version of the `getRR()` method is awaiting athentication fixes and will output some errors on screen. This is due to a security workaround that is currently being looked at in this [issue](https://github.com/CMSTrackerDPG/cernrequests/issues/1).
+
+
+# Acknowledgment
+Thanks for Peter Stein and Fabio Espinosa for your work in developing these tools.
