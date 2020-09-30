@@ -165,5 +165,5 @@ The most relevant methods to look at when wanting to change the final list are:
 The `ListRunsDriver.py` is an interactive (for now) script that will generate text files with the run numbers found on the specified source.
 Note that it is a bit hard coded for ZeroBias runs. This is something to be fixed in the future.
 
-*Side note* The latest version of the `getRR()` method is awaiting athentication fixes and will not always output correctly due to a wierd encoding error which is 
-currently being looked at.
+*Side note* The latest version of the `getRR()` method is awaiting athentication fixes and will output some errors on screen. This is due to some security 
+workaround that is currently being looked at.
